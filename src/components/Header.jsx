@@ -1,4 +1,10 @@
+import Button from "../components/UI/Button.jsx";
+
 export default function Header() {
+  function handleClick() {
+    console.log("111");
+  }
+
   return (
     <header id="main-header">
       <div id="title">
@@ -6,7 +12,9 @@ export default function Header() {
         <h1>Food Order</h1>
       </div>
       <nav>
-        <button>Cart</button>
+        <Button textButton onClick={handleClick}>
+          Cart(0)
+        </Button>
       </nav>
     </header>
   );
