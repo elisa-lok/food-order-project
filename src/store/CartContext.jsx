@@ -60,15 +60,26 @@ export function CartContextProvider({ children }) {
     dispatchCartAction({ type: "ADD_ITEM", item });
   }
 
-  function remove_item(item) {
+  function removeItem(item) {
     dispatchCartAction({ type: "REMOVE_ITEM", item });
   }
 
-  function clear_cart() {
+  function clearCart() {
     dispatchCartAction({ type: "CLEAR_CART" });
   }
 
-  return <CartContext.Provider>{children}</CartContext.Provider>;
+  const cartContext = {
+    items: cart.items,
+    addItem,
+    removeItem,
+    clearCart,
+  };
+
+  console.log(cartContext);
+
+  return (
+    <CartContext.Provider value={cartContext}>{children}</CartContext.Provider>
+  );
 }
 
 export default CartContext;
