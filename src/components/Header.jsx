@@ -1,16 +1,18 @@
 import { useContext } from "react";
 import Button from "../components/UI/Button.jsx";
 import CartContext from "../store/CartContext.jsx";
+import UserProgressContext from "../store/UserProgressContext.jsx";
 
 export default function Header() {
   const CartCxt = useContext(CartContext);
+  const userProgressCxt = useContext(UserProgressContext);
 
   const totalCartItems = CartCxt.items.reduce((totalNumberOfItems, item) => {
     return totalNumberOfItems + item.quantity;
   }, 0);
 
   function handleClick() {
-    console.log("111");
+    userProgressCxt.showCart();
   }
 
   return (
