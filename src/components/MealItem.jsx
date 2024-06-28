@@ -4,10 +4,10 @@ import { currencyFormatter } from "../util/formatter.js";
 import Button from "./UI/Button.jsx";
 
 export default function MealItem({ meal }) {
-  const CartCxt = useContext(CartContext);
+  const cartCxt = useContext(CartContext);
 
   function addToCart() {
-    CartCxt.addItem({ meal });
+    cartCxt.addItem(meal);
   }
 
   return (

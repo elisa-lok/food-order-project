@@ -8,7 +8,7 @@ import UserProgressContext from "../store/UserProgressContext.jsx";
 
 export default function Cart() {
   const cartCtx = useContext(CartContext);
-  const userProgressCxt = useContext(UserProgressContext);
+  const userProgressCtx = useContext(UserProgressContext);
 
   const cartTotal = cartCtx.items.reduce(
     (totalPrice, item) => totalPrice + item.quantity * item.price,
@@ -16,18 +16,18 @@ export default function Cart() {
   );
 
   function handleClose() {
-    userProgressCxt.hideCart();
+    userProgressCtx.hideCart();
   }
 
   function handleCheckout() {
-    userProgressCxt.showCheckout();
+    userProgressCtx.showCheckout();
   }
 
   return (
     <Modal
       className="cart"
-      open={userProgressCxt.progress === "cart"}
-      onClose={userProgressCxt.progress === "cart" ? handleClose : null}
+      open={userProgressCtx.progress === "cart"}
+      onClose={userProgressCtx.progress === "cart" ? handleClose : null}
     >
       <h2>Your Cart</h2>
       <ul>
@@ -38,7 +38,7 @@ export default function Cart() {
             quantity={item.quantity}
             price={item.price}
             onIncrease={() => cartCtx.addItem(item)}
-            onDecrease={() => cartCtx.removeItem(item)}
+            onDecrease={() => cartCtx.removeItem(item.id)}
           />
         ))}
       </ul>
