@@ -1,4 +1,4 @@
-Food Ordering Project - Using ReactJS
+**Food Ordering Project - Using ReactJS**
 
 ### Description:
 
